@@ -1,0 +1,29 @@
+---
+// Component Imports
+import StaticWrapper from '../components/static-wrapper.tsx';
+import InteractiveCounter from '../components/interactive-counter.tsx';
+import { Markdown } from "astro/components";
+
+const title: string = 'Better Astro Example';
+---
+
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width">
+    <title>{title}</title>
+    <link rel="icon" type="image/x-icon" href="/favicon.ico" />
+    <!-- https://docs.astro.build/guides/styling#migrating-from-v019 -->
+    <link rel="stylesheet" href={Astro.resolve("../style/global.css")} />
+</head>
+<body>
+    <main class="w-screen h-screen flex flex-col items-center justify-center">
+        <StaticWrapper client:load>
+            <Markdown>
+                ### Hello There
+            </Markdown>
+            </StaticWrapper>
+        <InteractiveCounter client:load />
+    </main>
+</body>
+</html>
